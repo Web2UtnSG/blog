@@ -1,3 +1,4 @@
+<x-layout>
 <h1>Post</h1>
 <hr>
 
@@ -15,3 +16,4 @@
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
+</x-layout>

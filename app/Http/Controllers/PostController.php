@@ -3,11 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use Illuminate\Auth\Middleware\Authorize;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 
 class PostController extends Controller
 {
-   
+   // use AuthorizesRequests;
+
     public function index()
     {
         return view('posts.index', [
@@ -24,6 +29,11 @@ class PostController extends Controller
 
     public function edit(Post $post)
     {
+
+        //Gate::authorize('edit-post', $post);
+        //auth()->user()->can('edit-post', $post);
+        //$this->authorize('edit', $post);
+
         return view('posts.edit', [
             'post' => $post
         ]);
@@ -36,6 +46,7 @@ class PostController extends Controller
 
     public function store()
     {
+ 
         $data = request()->validate([
             'title' => 'required',
             'body' => 'required',
@@ -51,6 +62,7 @@ class PostController extends Controller
 
     public function update(Post $post)
     {
+    
         $data = request()->validate([
             'title' => 'required',
             'body' => 'required',
@@ -63,6 +75,7 @@ class PostController extends Controller
 
     public function destroy(Post $post)
     {
+ 
         $post->delete();
 
         return redirect()->route('posts.index');

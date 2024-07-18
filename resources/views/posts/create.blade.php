@@ -1,3 +1,4 @@
+<x-layout>
 <h1>Creating a Post</h1>
 <hr>
 <form action="{{ route('posts.store') }}" method="POST">
@@ -12,3 +13,4 @@
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
 </form>
+</x-layout>
